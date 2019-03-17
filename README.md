@@ -1,6 +1,7 @@
 # amiibo-album
 
 Experimental project to check your amiibos. Developed with lit-html.
+
 [https://amiibo-album.firebaseapp.com](https://amiibo-album.firebaseapp.com)
 
 ## Quick start
@@ -24,5 +25,7 @@ firebase deploy
 ```
 ## Credit
 > Developed by @AlexArroyoDuque
+
 > Amiibo Api [https://github.com/N3evin/AmiiboAPI](https://github.com/N3evin/AmiiboAPI)
+
 > Sample LitElement project[https://github.com/PolymerLabs/start-lit-element](https://github.com/PolymerLabs/start-lit-element)
