@@ -2,5 +2,11 @@ var mock = [{"amiiboSeries":"Super Smash Bros.","character":"Mario","gameSeries"
 
 export function getAllAmiibos() {
   console.log('getAllAmiibos');
+  // images reduced
+  // https://github.com/N3evin/AmiiboAPI
+  // ./pngquant --quality=15-20 images/*.png --ext=.png --force
+  mock.forEach(m => {
+    m.image = m.image.replace('https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/', './src/')
+  });
   return mock;
 }

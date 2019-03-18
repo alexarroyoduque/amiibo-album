@@ -27,5 +27,6 @@ firebase deploy
 > Developed by @AlexArroyoDuque
 
 > Amiibo Api [https://github.com/N3evin/AmiiboAPI](https://github.com/N3evin/AmiiboAPI)
+All data from api are stored locally in this project. The images has been reduced.
 
 > Sample LitElement project [https://github.com/PolymerLabs/start-lit-element](https://github.com/PolymerLabs/start-lit-element)

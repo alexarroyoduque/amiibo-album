@@ -1,6 +1,8 @@
 import { LitElement, html, css } from 'lit-element';
+/* Comment this lines if you want to call the service api */
 import {getAmiiboseries} from './mock-amiiboseries';
 import {getAllAmiibos} from './mock-amiibos';
+/**/
 import('./amiibo-header.js')
 import('./amiibo-selector.js')
 import('./amiibo-progress.js')
@@ -21,9 +23,13 @@ export class AmiiboMain extends LitElement {
     this.allAmiibos = [];
     this.amiibosFiltered = [];
     this.amiiboseries = [];
+    /* Comment this lines if you want to call the service api */
     this.amiiboseries = getAmiiboseries();
     this.allAmiibos = getAllAmiibos();
     this.loadInitialList();
+    /**/
+
+    /* Uncomment this lines if you want to call the service api */
     //this.addEventListener('service-response-amiibo', this.handleAmiiboEvent);
     //this.addEventListener('service-response-amiiboseries', this.handleAmiiboSeriesEvent);
     this.addEventListener('selected-option-change', this.handleSelectedOptionChange);
@@ -142,6 +148,7 @@ export class AmiiboMain extends LitElement {
   render() {
     return html`
       <div class="content">
+        <!-- Uncomment this lines if you want to call the service api -->
         <!-- <amiibo-service endpoint='amiibo'></amiibo-service>
         <amiibo-service endpoint='amiiboseries'></amiibo-service> -->
         <header>
