@@ -99,10 +99,23 @@ export class AmiiboMain extends LitElement {
     localStorage.setItem('amiibos', JSON.stringify(this.allAmiibos));
   }
 
+  clearLocalStorage() {
+    this.amiibosFiltered.map(amiibo => amiibo.checked = false);
+    this.allAmiibos.map(amiibo => amiibo.checked = false);
+    var temp = this.amiibosFiltered;
+    this.amiibosFiltered = [];
+    setTimeout(() => {
+        this.amiibosFiltered = temp;
+    }, 0);
+
+    localStorage.clear();
+  }
+
   static get styles() {
     return css`
       header {
         margin-bottom: 0.8rem;
+        padding-bottom: 0.5rem;
         box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.5);
         background: #9e9528;  /* fallback for old browsers */
         background: -webkit-linear-gradient(to bottom, #9e9528, #d3be00 70%,#fffad0);  /* Chrome 10-25, Safari 5.1-6 */
@@ -134,6 +147,13 @@ export class AmiiboMain extends LitElement {
         margin: 0 auto;
         max-width: 400px;
       }
+
+      .clear {
+        height: 2rem;
+        margin: 0 auto;
+        display: block;
+      }
+
       ul, li {
         padding: 0;
         margin: 0;
@@ -167,6 +187,7 @@ export class AmiiboMain extends LitElement {
           <article>
             <amiibo-selector label="Series" placeholder="All" placeholdervalue="all" options=${JSON.stringify(this.amiiboseries.map(serie => serie.name))}></amiibo-selector>
             <amiibo-progress max=${this.amiibosFiltered.length} current=${this.amiibosFiltered.filter(amiibo => amiibo.checked).length}></amiibo-progress>
+            <button class="clear" @click="${this.clearLocalStorage}">Clear saved data</button>
           </article>
         </header>
 
