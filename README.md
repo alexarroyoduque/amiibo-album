@@ -28,4 +28,4 @@ firebase deploy
 
 > Amiibo Api [https://github.com/N3evin/AmiiboAPI](https://github.com/N3evin/AmiiboAPI)
 
-> Sample LitElement project[https://github.com/PolymerLabs/start-lit-element](https://github.com/PolymerLabs/start-lit-element)
+> Sample LitElement project [https://github.com/PolymerLabs/start-lit-element](https://github.com/PolymerLabs/start-lit-element)

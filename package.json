@@ -1,8 +1,8 @@
 {
   "name": "amiibo-album",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "amiibo-album",
-  "repository": "https://github.com/PolymerLabs/amiibo-album.git",
+  "repository": "https://github.com/alexarroyoduque/amiibo-album",
   "main": "src/amiibo-main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,7 +10,7 @@
   "author": "Alejandro Arroyo Duque",
   "license": "licencia de Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional",
   "dependencies": {
-    "@webcomponents/webcomponentsjs": "latest",
-    "lit-element": "latest"
+    "@webcomponents/webcomponentsjs": "2.2.7",
+    "lit-element": "2.2.7"
   }
 }

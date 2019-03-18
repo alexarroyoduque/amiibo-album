@@ -36,8 +36,8 @@ export class AmiiboItem extends LitElement {
       }
 
       h1 {
-        font-size: 1.2rem;
-        font-family: monospace;
+        font-size: 1rem;
+        font-family: 'Roboto Condensed', sans-serif;        
         font-weight: normal;
         margin: 0.3rem 0 0 5rem;
         display: inline-block;

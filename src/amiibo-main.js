@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit-element';
-//import {getAmiiboseries} from './mock-amiiboseries';
-//import {getCharacters} from './mock-characters';
+import {getAmiiboseries} from './mock-amiiboseries';
+import {getAllAmiibos} from './mock-amiibos';
 import('./amiibo-header.js')
 import('./amiibo-selector.js')
 import('./amiibo-progress.js')
@@ -21,11 +21,11 @@ export class AmiiboMain extends LitElement {
     this.allAmiibos = [];
     this.amiibosFiltered = [];
     this.amiiboseries = [];
-    //this.amiiboseries = getAmiiboseries();
-    //this.allAmiibos = getCharacters();
-    //this.loadInitialList();
-    this.addEventListener('service-response-amiibo', this.handleAmiiboEvent);
-    this.addEventListener('service-response-amiiboseries', this.handleAmiiboSeriesEvent);
+    this.amiiboseries = getAmiiboseries();
+    this.allAmiibos = getAllAmiibos();
+    this.loadInitialList();
+    //this.addEventListener('service-response-amiibo', this.handleAmiiboEvent);
+    //this.addEventListener('service-response-amiiboseries', this.handleAmiiboSeriesEvent);
     this.addEventListener('selected-option-change', this.handleSelectedOptionChange);
     this.addEventListener('amiibo-checked-change', this.handleAmiiboCheckedChange);
   }
@@ -142,15 +142,20 @@ export class AmiiboMain extends LitElement {
   render() {
     return html`
       <div class="content">
-        <amiibo-service endpoint='amiibo'></amiibo-service>
-        <amiibo-service endpoint='amiiboseries'></amiibo-service>
+        <!-- <amiibo-service endpoint='amiibo'></amiibo-service>
+        <amiibo-service endpoint='amiiboseries'></amiibo-service> -->
         <header>
           <article>
-          <span class="info">
-            <a href="https://github.com/N3evin/AmiiboAPI" target="_black">Api by N3evin</a>
-            <a href="https://github.com/alexarroyoduque/amiibo-album" target="_black">github project</a>
-            <span>developed with lit-html</span>
-          </span>
+          <div class="info">
+            <div>
+              <a href="https://github.com/N3evin/AmiiboAPI" target="_black">Api by N3evin</a>
+              <a href="https://github.com/alexarroyoduque/amiibo-album" target="_black">github project</a>
+              <span>Updated: March 2019</span>
+            </div>
+            <div>
+              <span>Developed with lit-html</span>
+            </div>
+          </div>
             <amiibo-header title="amiibo_album" subtitle="@AlexArroyoDuque"></amiibo-header>
           </article>
           <article>
