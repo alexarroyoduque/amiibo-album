@@ -45,7 +45,7 @@ export class AmiiboItem extends LitElement {
       }
 
       input[type="checkbox"] {
-        zoom: 3;
+        zoom: 2.5;
         position: absolute;
         left: calc(100% - 20px);
       }
