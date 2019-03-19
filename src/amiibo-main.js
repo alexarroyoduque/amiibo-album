@@ -140,6 +140,9 @@ export class AmiiboMain extends LitElement {
         --amiibo-header-title-font-family: var(--theme-title-font-family);
         --amiibo-header-subtitle-font-family: var(--theme-primary-font-family);
         --amiibo-header-color: var(--theme-color-primary);
+        background: url(./src/title-decoration.png) no-repeat;
+        background-position-x: center;
+        background-position-y: -3px;
       }
 
       amiibo-selector {
