@@ -129,9 +129,10 @@ export class AmiiboMain extends LitElement {
         margin-bottom: 0.8rem;
         padding-bottom: 0.5rem;
         box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.5);
-        background: #9e9528;  /* fallback for old browsers */
-        background: -webkit-linear-gradient(to bottom, #9e9528, #d3be00 70%,#fffad0);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to bottom, #9e9528, #d3be00 70%,#fffad0);
+        background: #0052D4;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to top, #6FB1FC, #4364F7, #0052D4);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to top, #6FB1FC, #4364F7, #0052D4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        
         font-family: var(--theme-primary-font-family);
       }
 
