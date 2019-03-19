@@ -211,11 +211,11 @@ export class AmiiboMain extends LitElement {
           <article>
           <div class="info">
             <div>
-              <a href="https://github.com/N3evin/AmiiboAPI" target="_black">Api by N3evin</a>
+              <a href="https://github.com/N3evin/AmiiboAPI" target="_blank">Api by N3evin</a>
               <span>Updated: March 2019</span>
             </div>
             <div>
-              <a href="https://github.com/alexarroyoduque/amiibo-album" target="_black">Project developed with lit-htm by AlexArroyoDuque</a>
+              <a href="https://github.com/alexarroyoduque/amiibo-album" target="_blank">Project developed with lit-htm by AlexArroyoDuque</a>
             </div>
           </div>
             <amiibo-header title="amiibum" subtitle="Album to mark your collected amiibos"></amiibo-header>
