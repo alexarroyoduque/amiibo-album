@@ -4,7 +4,7 @@ export function getAllAmiibos() {
   console.log('getAllAmiibos');
   // images reduced
   // https://github.com/N3evin/AmiiboAPI
-  // ./pngquant --quality=10 images/*.png --ext=.png --force
+  // ./pngquant --quality=4 images/*.png --ext=.png --force
   mock.forEach(m => {
     m.image = m.image.replace('https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/', './src/')
   });
