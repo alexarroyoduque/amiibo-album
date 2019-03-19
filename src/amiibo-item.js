@@ -34,11 +34,11 @@ export class AmiiboItem extends LitElement {
       }
 
       h1 {
-        font-size: 1rem;
+        font-size: .9rem;
         font-family: var(--amiibo-item-font-family);
-        margin: 0.3rem 0 0 5rem;
         display: inline-block;
-        max-width: 14rem;
+        margin: .4rem 0 0 5rem;
+        max-width: 11rem;
       }
 
       input[type="checkbox"] {
