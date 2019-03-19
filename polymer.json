@@ -4,7 +4,7 @@
   "fragments": [],
   "npm": true,
   "moduleResolution": "node",
-  "sources": ["src/amiibo-main.js", "src/images/**", "manifest/**", "manifest.json", "package.json"],
+  "sources": ["src/amiibo-main.js", "src/*.png", "src/images/**", "manifest/**", "manifest.json", "package.json"],
   "extraDependencies": [
     "robots.txt",
     "node_modules/@webcomponents/webcomponentsjs/**"
