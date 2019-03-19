@@ -119,7 +119,8 @@ export class AmiiboMain extends LitElement {
         box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.5);
         background: #9e9528;  /* fallback for old browsers */
         background: -webkit-linear-gradient(to bottom, #9e9528, #d3be00 70%,#fffad0);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to bottom, #9e9528, #d3be00 70%,#fffad0); 
+        background: linear-gradient(to bottom, #9e9528, #d3be00 70%,#fffad0);
+        font-family: 'Roboto Condensed', sans-serif;
       }
 
       .info {
@@ -179,13 +180,13 @@ export class AmiiboMain extends LitElement {
               <span>Updated: March 2019</span>
             </div>
             <div>
-              <a href="https://github.com/alexarroyoduque/amiibo-album" target="_black">Github project, developed with lit-htm</a>
+              <a href="https://github.com/alexarroyoduque/amiibo-album" target="_black">Project developed with lit-htm by @AlexArroyoDuque</a>
             </div>
           </div>
-            <amiibo-header title="amiibo_album" subtitle="@AlexArroyoDuque"></amiibo-header>
+            <amiibo-header title="amiibum" subtitle="Album to mark your collected amiibos"></amiibo-header>
           </article>
           <article>
-            <amiibo-selector label="Series" placeholder="All" placeholdervalue="all" options=${JSON.stringify(this.amiiboseries.map(serie => serie.name))}></amiibo-selector>
+            <amiibo-selector label="Series (${this.amiiboseries.length})" placeholder="All" placeholdervalue="all" options=${JSON.stringify(this.amiiboseries.map(serie => serie.name))}></amiibo-selector>
             <amiibo-progress max=${this.amiibosFiltered.length} current=${this.amiibosFiltered.filter(amiibo => amiibo.checked).length}></amiibo-progress>
             <button class="clear" @click="${this.clearLocalStorage}">Clear saved data</button>
           </article>

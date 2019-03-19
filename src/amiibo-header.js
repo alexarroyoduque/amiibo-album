@@ -26,12 +26,12 @@ export class AmiiboHeader extends LitElement {
       }
 
       h1 {
-        font-family: 'Maven Pro', sans-serif;
+        font-family: 'Ubuntu', sans-serif;
         font-size: 1.8rem;
       }
 
       h2 {
-        font-family: 'Ubuntu', sans-serif;
+        font-family: 'Roboto Condensed', sans-serif;
         font-size: 1rem;
       }
 

@@ -45,7 +45,7 @@ export class AmiiboService extends LitElement {
 
     this.get(url).then(response => {
       this.response = JSON.parse(response);
-      console.log(JSON.parse(response));
+      console.log('service');
       console.log(this.response);
       this.dispatchEvent(new CustomEvent(`service-response-${this.endpoint}`, {
         detail: this.response,
