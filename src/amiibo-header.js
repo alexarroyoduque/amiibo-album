@@ -16,7 +16,7 @@ export class AmiiboHeader extends LitElement {
     return css`
       :host {
         display: block;
-        color: white;
+        color: var(--amiibo-header-color, white);
         padding: 0.7rem;
         text-align: center;
       }
@@ -26,12 +26,12 @@ export class AmiiboHeader extends LitElement {
       }
 
       h1 {
-        font-family: 'Ubuntu', sans-serif;
+        font-family: var(--amiibo-header-title-font-family);
         font-size: 1.8rem;
       }
 
       h2 {
-        font-family: 'Roboto Condensed', sans-serif;
+        font-family: var(--amiibo-header-subtitle-font-family);
         font-size: 1rem;
       }
 

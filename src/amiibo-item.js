@@ -20,14 +20,12 @@ export class AmiiboItem extends LitElement {
   static get styles() {
     return css`
       .item {
-        background-color: #eeeeee;
+        background-color: var(--amiibo-item-backgroun-color, gray);
         background-size: 72px 90px;
         background-repeat: no-repeat;
         background-position-x: 0.5rem;
         background-position-y: -0.2rem;
-        
-        color: #585858;
-
+        color: var(--amiibo-item-color, white);
         height: 3.5rem;
         padding: 0 0 0 .5rem;
         box-shadow: inset 0px -2px 6px -4px #767676;
@@ -37,8 +35,7 @@ export class AmiiboItem extends LitElement {
 
       h1 {
         font-size: 1rem;
-        font-family: 'Roboto Condensed', sans-serif;        
-        font-weight: normal;
+        font-family: var(--amiibo-item-font-family);
         margin: 0.3rem 0 0 5rem;
         display: inline-block;
         max-width: 14rem;

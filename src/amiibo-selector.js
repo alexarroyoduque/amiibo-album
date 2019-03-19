@@ -35,10 +35,10 @@ export class AmiiboSelector extends LitElement {
 
       :host {
         display: block;
-        color: white;
+        color: var(--amiibo-selector-color, white);
         padding: 0.7rem;
         text-align: center;
-        font-family: 'Roboto Condensed', sans-serif;
+        font-family: var(--amiibo-selector-font-family);
       }
       
       select {

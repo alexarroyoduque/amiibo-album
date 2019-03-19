@@ -21,15 +21,16 @@ export class AmiiboTools extends LitElement {
 
       :host {
         display: block;
-        color: white;
+        color: var(--amiibo-progress-color, white);
+
         padding: 0.7rem;
         text-align: center;
-        font-family: 'Roboto Condensed', sans-serif;
+        font-family: var(--amiibo-progress-font-family);
       }
 
       .bar {
         display: block;
-        background: #424242;
+        background-color: var(--amiibo-progress-background-color, black);
         border-radius: 6px;
         height: 1rem;
         font-size: .8rem;

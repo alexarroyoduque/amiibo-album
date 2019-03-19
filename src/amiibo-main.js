@@ -113,6 +113,18 @@ export class AmiiboMain extends LitElement {
 
   static get styles() {
     return css`
+      :host {
+        --theme-title-font-family: Baumans;
+        --theme-primary-font-family: Muli;
+        --theme-secondary-font-family: Montserrat;
+        --theme-color-light: #fff;
+        --theme-color-light-gray: #eeeeee;
+        --theme-color-dark: #585858;
+
+        --theme-color-primary: var(--theme-color-light);
+        --theme-color-secondary: var(--theme-color-dark);
+      }
+
       header {
         margin-bottom: 0.8rem;
         padding-bottom: 0.5rem;
@@ -120,14 +132,37 @@ export class AmiiboMain extends LitElement {
         background: #9e9528;  /* fallback for old browsers */
         background: -webkit-linear-gradient(to bottom, #9e9528, #d3be00 70%,#fffad0);  /* Chrome 10-25, Safari 5.1-6 */
         background: linear-gradient(to bottom, #9e9528, #d3be00 70%,#fffad0);
-        font-family: 'Roboto Condensed', sans-serif;
+        font-family: var(--theme-primary-font-family);
+      }
+
+      amiibo-header {
+        --amiibo-header-title-font-family: var(--theme-title-font-family);
+        --amiibo-header-subtitle-font-family: var(--theme-primary-font-family);
+        --amiibo-header-color: var(--theme-color-primary);
+      }
+
+      amiibo-selector {
+        --amiibo-selector-font-family: var(--theme-primary-font-family);
+        --amiibo-selector-color: var(--theme-color-primary);
+      }
+
+      amiibo-progress {
+        --amiibo-progress-font-family: var(--theme-primary-font-family);
+        --amiibo-progress-color: var(--theme-color-light);
+        --amiibo-progress-background-color: var(--theme-color-dark);
+      }
+
+      amiibo-item {
+        --amiibo-item-font-family: var(--theme-secondary-font-family);
+        --amiibo-item-color: var(--theme-color-dark);
+        --amiibo-item-backgroun-color: var(--theme-color-light-gray);
       }
 
       .info {
         color: white;
         width: 100%;
         display: block;
-        font-size: 0.9rem;
+        font-size: 0.7rem;
         opacity: .6;
         text-align: center;
       }
@@ -180,7 +215,7 @@ export class AmiiboMain extends LitElement {
               <span>Updated: March 2019</span>
             </div>
             <div>
-              <a href="https://github.com/alexarroyoduque/amiibo-album" target="_black">Project developed with lit-htm by @AlexArroyoDuque</a>
+              <a href="https://github.com/alexarroyoduque/amiibo-album" target="_black">Project developed with lit-htm by AlexArroyoDuque</a>
             </div>
           </div>
             <amiibo-header title="amiibum" subtitle="Album to mark your collected amiibos"></amiibo-header>
