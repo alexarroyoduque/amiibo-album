@@ -1,6 +1,7 @@
-# amiibo-album
+# amiibum
 
-Experimental project to check your amiibos. Developed with lit-html.
+Experimental project.
+Mark your collected amiibos with this album developed with lit-html.
 
 [https://amiibo-album.firebaseapp.com](https://amiibo-album.firebaseapp.com)
 
