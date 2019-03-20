@@ -36,4 +36,4 @@ The api calls are commented. The amiibo-service components would call the servic
 
 > Sample LitElement project [https://github.com/PolymerLabs/start-lit-element](https://github.com/PolymerLabs/start-lit-element)
 
-> Google fonts [https://fonts.google.com/](https://fonts.google.com/)
+> Google fonts [https://fonts.google.com](https://fonts.google.com)
