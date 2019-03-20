@@ -230,11 +230,7 @@ export class AmiiboMain extends LitElement {
         color: white;
       }
 
-      .info span {
-        font-style: italic
-      }
-
-      .info div {
+      .info {
         padding-top: .3rem;
       }
 
@@ -269,13 +265,11 @@ export class AmiiboMain extends LitElement {
         <header>
           <article>
             <div class="info">
-              <div>
-                <a href="https://github.com/N3evin/AmiiboAPI" target="_blank">Api by N3evin</a>
-                <span>Updated: March 2019</span>
-              </div>
-              <div>
+              <p>
                 <a href="https://github.com/alexarroyoduque/amiibo-album" target="_blank">Project developed with lit-htm by AlexArroyoDuque</a>
-              </div>
+              </p>
+              <p>Api by N3evin Updated: March 2019</p>
+   
             </div>
             <div class="title">
               <amiibo-header title="amiibum" subtitle="Album to mark your collected amiibos"></amiibo-header>
