@@ -269,7 +269,7 @@ export class AmiiboMain extends LitElement {
         <!-- <amiibo-service endpoint='amiibo'></amiibo-service>
         <amiibo-service endpoint='amiiboseries'></amiibo-service> -->
         <header>
-          <article>
+          <div>
             <div class="info">
               <p>
                 <a href="https://github.com/alexarroyoduque/amiibo-album" target="_blank">Project developed with lit-htm by AlexArroyoDuque</a>
@@ -286,17 +286,19 @@ export class AmiiboMain extends LitElement {
               <span class="header-decoration right medium"></span>
               <span class="header-decoration right bottom"></span>
             </div>
-          </article>
-          <article>
+            </div>
+          <div>
             <amiibo-selector label="Series (${this.amiiboseries.length})" placeholder="All" placeholdervalue="all" options=${JSON.stringify(this.amiiboseries.map(serie => serie.name))}></amiibo-selector>
             <amiibo-progress max=${this.amiibosFiltered.length} current=${this.amiibosFiltered.filter(amiibo => amiibo.checked).length}></amiibo-progress>
             <button class="clear" ?disabled="${!this.amiibosFiltered.filter(amiibo => amiibo.checked).length}" @click="${this.clearLocalStorage}">Clear saved data</button>
-          </article>
+          </div>
         </header>
+        <article>
+          <ul>
+            ${this.amiibosFiltered.map(character => html`<li><amiibo-item amiibo=${JSON.stringify(character)}></amiibo-item></li>`)}
+          </ul>
+        </article>
 
-        <ul>
-          ${this.amiibosFiltered.map(character => html`<li><amiibo-item amiibo=${JSON.stringify(character)}></amiibo-item></li>`)}
-        </ul>
       </div>
     `;
   }
