@@ -27,7 +27,7 @@ firebase deploy
 ```
 
 ### Development info
-The api calls are commented. The amiibo-service components would call the service and emit an event that listens to amiibo-main. Calls to the api use http instead of https. The app is deployed in firebase and firebase only allows https calls. Therefore the response json and amiibo images are is locally in the app. The images have been reduced with pngquant.
+The api calls are commented. The amiibo-service components would call the service and emit an event that listens to amiibo-main. Calls to the api use http instead of https. The app is deployed in firebase and firebase only allows https calls. Therefore the response json and amiibo images are is locally in the app. The images have been reduced with mogrify and pngquant.
 
 ## Credits
 > Developed by @AlexArroyoDuque
