@@ -25,7 +25,7 @@ polymer serve build/default
 firebase deploy
 ```
 
-## Development info
+### Development info
 The api calls are commented. The amiibo-service components would call the service and emit an event that listens to amiibo-main. Calls to the api use http instead of https. The app is deployed in firebase that only allows https calls. Therefore the response json of the service is locally in the application and the images as well. The images have reduced their size with pngquant.
 
 ## Credit
