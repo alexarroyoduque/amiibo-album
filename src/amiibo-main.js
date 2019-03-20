@@ -290,7 +290,7 @@ export class AmiiboMain extends LitElement {
           <article>
             <amiibo-selector label="Series (${this.amiiboseries.length})" placeholder="All" placeholdervalue="all" options=${JSON.stringify(this.amiiboseries.map(serie => serie.name))}></amiibo-selector>
             <amiibo-progress max=${this.amiibosFiltered.length} current=${this.amiibosFiltered.filter(amiibo => amiibo.checked).length}></amiibo-progress>
-            <button class="clear" @click="${this.clearLocalStorage}">Clear saved data</button>
+            <button class="clear" ?disabled="${!this.amiibosFiltered.filter(amiibo => amiibo.checked).length}" @click="${this.clearLocalStorage}">Clear saved data</button>
           </article>
         </header>
 
