@@ -3,14 +3,14 @@
 Experimental project.
 Mark your collected amiibos with this album developed with lit-html.
 
-[https://amiibo-album.firebaseapp.com](https://amiibo-album.firebaseapp.com)
+[https://amiibum.firebaseapp.com](https://amiibum.firebaseapp.com)
 
 ## Quick start
 
 ```
 npm install -g polymer-cli
-git clone this-repo
-cd amiibo-album
+git clone "this-repository"
+cd amiibum
 npm install
 polymer serve
 ```

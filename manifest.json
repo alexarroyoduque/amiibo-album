@@ -3,10 +3,10 @@
   "version": "1.0",
   "manifest_version": 1,
 
-  "description": "amiibo-album",
+  "description": "amiibum",
   "start_url": "index.html",
-  "name": "amiibo-album",
-  "short_name": "amiibo-al",
+  "name": "amiibum",
+  "short_name": "amiibum",
   "background_color": "#ffffff",
   "theme_color":"#ffffff",
   
