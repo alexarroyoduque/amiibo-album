@@ -20,7 +20,6 @@ export class AmiiboItem extends LitElement {
   static get styles() {
     return css`
       .item {
-        background-color: var(--amiibo-item-backgroun-color, gray);
         background-size: 72px 90px;
         background-repeat: no-repeat;
         background-position-x: 0.5rem;
@@ -28,8 +27,6 @@ export class AmiiboItem extends LitElement {
         color: var(--amiibo-item-color, white);
         height: 3.5rem;
         padding: 0 0 0 .5rem;
-        box-shadow: inset 0px -2px 6px -4px #767676;
-        
         position: relative;
       }
 

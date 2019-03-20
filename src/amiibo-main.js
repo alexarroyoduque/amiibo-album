@@ -214,7 +214,6 @@ export class AmiiboMain extends LitElement {
       amiibo-item {
         --amiibo-item-font-family: var(--theme-secondary-font-family);
         --amiibo-item-color: var(--theme-color-dark);
-        --amiibo-item-backgroun-color: var(--theme-color-light-gray);
       }
 
       .info {
@@ -257,6 +256,13 @@ export class AmiiboMain extends LitElement {
       }
       li {
         list-style: none;
+        box-shadow: inset 0px -1px 0px 0px #E0E0E0;
+      }
+      li:nth-child(odd) {
+        background-color: #F5F5F5;
+      }
+      li:nth-child(even) {
+        background-color: #FAFAFA;
       }
       :host([hidden]) { display: none; }
     `;
