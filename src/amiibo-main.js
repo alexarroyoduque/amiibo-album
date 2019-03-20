@@ -278,7 +278,7 @@ export class AmiiboMain extends LitElement {
    
             </div>
             <div class="title">
-              <amiibo-header title="amiibum" subtitle="Album to mark your collected amiibos"></amiibo-header>
+              <amiibo-header title="amiibum" subtitle="Album to check your collected amiibos"></amiibo-header>
               <span class="header-decoration left top"></span>
               <span class="header-decoration left medium"></span>
               <span class="header-decoration left bottom"></span>

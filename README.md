@@ -1,7 +1,7 @@
 # amiibum
 
 Experimental project with lit-html.
-Mark your collected amiibos with this album developed.
+Check your collected amiibos with this album developed.
 
 [https://amiibum.firebaseapp.com](https://amiibum.firebaseapp.com)
 

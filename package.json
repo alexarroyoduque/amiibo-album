@@ -1,7 +1,7 @@
 {
   "name": "amiibum",
   "version": "0.0.1",
-  "description": "Experimental project. Mark your collected amiibos with this album developed with lit-html.",
+  "description": "Experimental project with lit-html. Check your collected amiibos with this album developed.",
   "repository": "https://github.com/alexarroyoduque/amiibum",
   "main": "src/amiibo-main.js",
   "scripts": {
