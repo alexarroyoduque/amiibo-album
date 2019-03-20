@@ -233,6 +233,12 @@ export class AmiiboMain extends LitElement {
       .info {
         padding-top: .3rem;
       }
+      .info p {
+        margin: 0;
+      }
+      .info .extra {
+        font-style: italic;
+      }
 
       .content {
         margin: 0 auto;
@@ -268,7 +274,7 @@ export class AmiiboMain extends LitElement {
               <p>
                 <a href="https://github.com/alexarroyoduque/amiibo-album" target="_blank">Project developed with lit-htm by AlexArroyoDuque</a>
               </p>
-              <p>Api by N3evin Updated: March 2019</p>
+              <p class="extra">Api by N3evin. Updated: March 2019</p>
    
             </div>
             <div class="title">
