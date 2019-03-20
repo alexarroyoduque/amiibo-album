@@ -272,7 +272,7 @@ export class AmiiboMain extends LitElement {
           <div>
             <div class="info">
               <p>
-                <a href="https://github.com/alexarroyoduque/amiibo-album" target="_blank">Project developed with lit-htm by AlexArroyoDuque</a>
+                <a href="https://github.com/alexarroyoduque/amiibo-album" title="source code" target="_blank">Project developed with lit-htm by AlexArroyoDuque</a>
               </p>
               <p class="extra">Api by N3evin. Updated: March 2019</p>
    
