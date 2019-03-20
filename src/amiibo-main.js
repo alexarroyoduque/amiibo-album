@@ -150,7 +150,7 @@ export class AmiiboMain extends LitElement {
         right: 0;
         margin-left: auto;
         margin-right: auto;
-        background-color: white;
+        background-color: var(--theme-color-primary);
         clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
         -webkit-clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
         display: inline-block;
@@ -158,64 +158,46 @@ export class AmiiboMain extends LitElement {
         width: 6px;
       }
 
-      .header-decoration.left-top {
-        left: -133px;
-        top: 15px;
-        transform: rotate(120deg);
-      }
-
-      .header-decoration.left-medium {
-        left: -140px;
-        top: 25px;
-        transform: rotate(90deg);
-      }
-
-      .header-decoration.left-bottom {
-        left: -133px;
-        transform: rotate(60deg);
-        top: 35px;
-      }
-
       .header-decoration.left.top {
-        left: -133px;
+        left: -140px;
         transform: rotate(120deg);
       }
 
       .header-decoration.left.medium {
-        left: -140px;
+        left: -147px;
         transform: rotate(90deg);
       }
 
       .header-decoration.left.bottom {
-        left: -133px;
+        left: -140px;
         transform: rotate(60deg);
       }
 
       .header-decoration.right.top {
-        left: 133px;
+        left: 140px;
         transform: rotate(-120deg);
       }
 
       .header-decoration.right.medium {
-        left: 140px;
+        left: 147px;
         transform: rotate(-90deg);
       }
 
       .header-decoration.right.bottom {
-        left: 133px;
+        left: 140px;
         transform: rotate(-60deg);
       }
 
       .header-decoration.top {
-        top: 15px;
+        top: 16px;
       }
 
       .header-decoration.medium {
-        top: 25px;
+        top: 26px;
       }
 
       .header-decoration.bottom {
-        top: 35px;
+        top: 36px;
       }
 
       amiibo-selector {
