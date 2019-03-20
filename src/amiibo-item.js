@@ -21,7 +21,7 @@ export class AmiiboItem extends LitElement {
     return css`
       .item {
         background-color: var(--amiibo-item-backgroun-color, gray);
-        background-size: 17%;
+        background-size: 72px 90px;
         background-repeat: no-repeat;
         background-position-x: 0.5rem;
         background-position-y: -0.2rem;
