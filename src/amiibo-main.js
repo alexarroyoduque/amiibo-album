@@ -118,7 +118,7 @@ export class AmiiboMain extends LitElement {
         --theme-primary-font-family: Muli;
         --theme-secondary-font-family: Montserrat;
         --theme-color-light: #fff;
-        --theme-color-light-gray: #eeeeee;
+        --theme-color-light-gray: #F5F5F5;
         --theme-color-dark: #585858;
 
         --theme-color-primary: var(--theme-color-light);
@@ -140,9 +140,81 @@ export class AmiiboMain extends LitElement {
         --amiibo-header-title-font-family: var(--theme-title-font-family);
         --amiibo-header-subtitle-font-family: var(--theme-primary-font-family);
         --amiibo-header-color: var(--theme-color-primary);
-        background: url(./src/title-decoration.png) no-repeat;
-        background-position-x: center;
-        background-position-y: -3px;
+      }
+
+      .title {
+        position: relative;
+      }
+      .header-decoration {
+        position: absolute;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: white;
+        clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+        display: inline-block;
+        height: 8px;
+        width: 6px;
+      }
+
+      .header-decoration.left-top {
+        left: -133px;
+        top: 15px;
+        transform: rotate(120deg);
+      }
+
+      .header-decoration.left-medium {
+        left: -140px;
+        top: 25px;
+        transform: rotate(90deg);
+      }
+
+      .header-decoration.left-bottom {
+        left: -133px;
+        transform: rotate(60deg);
+        top: 35px;
+      }
+
+      .header-decoration.left.top {
+        left: -133px;
+        transform: rotate(120deg);
+      }
+
+      .header-decoration.left.medium {
+        left: -140px;
+        transform: rotate(90deg);
+      }
+
+      .header-decoration.left.bottom {
+        left: -133px;
+        transform: rotate(60deg);
+      }
+
+      .header-decoration.right.top {
+        left: 133px;
+        transform: rotate(-120deg);
+      }
+
+      .header-decoration.right.medium {
+        left: 140px;
+        transform: rotate(-90deg);
+      }
+
+      .header-decoration.right.bottom {
+        left: 133px;
+        transform: rotate(-60deg);
+      }
+
+      .header-decoration.top {
+        top: 15px;
+      }
+
+      .header-decoration.medium {
+        top: 25px;
+      }
+
+      .header-decoration.bottom {
+        top: 35px;
       }
 
       amiibo-selector {
@@ -213,16 +285,24 @@ export class AmiiboMain extends LitElement {
         <amiibo-service endpoint='amiiboseries'></amiibo-service> -->
         <header>
           <article>
-          <div class="info">
-            <div>
-              <a href="https://github.com/N3evin/AmiiboAPI" target="_blank">Api by N3evin</a>
-              <span>Updated: March 2019</span>
+            <div class="info">
+              <div>
+                <a href="https://github.com/N3evin/AmiiboAPI" target="_blank">Api by N3evin</a>
+                <span>Updated: March 2019</span>
+              </div>
+              <div>
+                <a href="https://github.com/alexarroyoduque/amiibo-album" target="_blank">Project developed with lit-htm by AlexArroyoDuque</a>
+              </div>
             </div>
-            <div>
-              <a href="https://github.com/alexarroyoduque/amiibo-album" target="_blank">Project developed with lit-htm by AlexArroyoDuque</a>
+            <div class="title">
+              <amiibo-header title="amiibum" subtitle="Album to mark your collected amiibos"></amiibo-header>
+              <span class="header-decoration left top"></span>
+              <span class="header-decoration left medium"></span>
+              <span class="header-decoration left bottom"></span>
+              <span class="header-decoration right top"></span>
+              <span class="header-decoration right medium"></span>
+              <span class="header-decoration right bottom"></span>
             </div>
-          </div>
-            <amiibo-header title="amiibum" subtitle="Album to mark your collected amiibos"></amiibo-header>
           </article>
           <article>
             <amiibo-selector label="Series (${this.amiiboseries.length})" placeholder="All" placeholdervalue="all" options=${JSON.stringify(this.amiiboseries.map(serie => serie.name))}></amiibo-selector>
