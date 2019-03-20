@@ -152,6 +152,7 @@ export class AmiiboMain extends LitElement {
         margin-right: auto;
         background-color: white;
         clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+        -webkit-clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
         display: inline-block;
         height: 8px;
         width: 6px;
