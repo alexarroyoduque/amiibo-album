@@ -247,7 +247,7 @@ export class AmiiboMain extends LitElement {
 
       .clear {
         height: 2rem;
-        margin: 0 auto;
+        margin-left: 0.7rem;
         display: block;
       }
 
