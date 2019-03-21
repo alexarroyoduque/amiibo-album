@@ -19,7 +19,7 @@
     "html": {
       "minify": true
     },
-    "addServiceWorker": true,
+    "addServiceWorker": false,
     "addPushManifest": true
   }]
 }
