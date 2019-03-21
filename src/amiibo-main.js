@@ -15,13 +15,13 @@ import {getAllAmiibos} from './mock-amiibos';
 import('./amiibo-header.js')
 import('./amiibo-selector.js')
 import('./amiibo-progress.js')
-import('./amiibo-item.js')
 /* Uncomment this line if you want to call the service api */
 // import('./amiibo-service.js')
 
 export class AmiiboMain extends LitElement {
   static get properties() {
     return {
+      loadComplete: {type: Boolean},
       allAmiibos: {type: Array},
       amiiboseries: {type: Array},
       amiibosFiltered: {type: Array}
@@ -30,6 +30,7 @@ export class AmiiboMain extends LitElement {
 
   constructor() {
     super();
+    this.loadComplete = false;
     this.allAmiibos = [];
     this.amiibosFiltered = [];
     this.amiiboseries = [];
@@ -41,6 +42,18 @@ export class AmiiboMain extends LitElement {
     // this.addServiceListener();
     this.addEventListener('selected-option-change', this.handleSelectedOptionChange);
     this.addEventListener('amiibo-checked-change', this.handleAmiiboCheckedChange);
+  }
+
+  firstUpdated() {
+    this.loadLazy();
+  }
+
+  async loadLazy() {
+    return import('./amiibo-item.js').then((LazyElement) => {
+      this.loadComplete = true;
+    }).catch((reason) => {
+      console.log("LazyElement failed to load", reason);
+    });
   }
 
   getLocalAmiibos() {
@@ -160,64 +173,6 @@ export class AmiiboMain extends LitElement {
         --amiibo-header-color: var(--theme-color-primary);
       }
 
-      .title {
-        position: relative;
-      }
-      .header-decoration {
-        position: absolute;
-        right: 0;
-        margin-left: auto;
-        margin-right: auto;
-        background-color: var(--theme-color-primary);
-        clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
-        -webkit-clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
-        display: inline-block;
-        height: 8px;
-        width: 6px;
-      }
-
-      .header-decoration.left.top {
-        left: -140px;
-        transform: rotate(120deg);
-      }
-
-      .header-decoration.left.medium {
-        left: -147px;
-        transform: rotate(90deg);
-      }
-
-      .header-decoration.left.bottom {
-        left: -140px;
-        transform: rotate(60deg);
-      }
-
-      .header-decoration.right.top {
-        left: 140px;
-        transform: rotate(-120deg);
-      }
-
-      .header-decoration.right.medium {
-        left: 147px;
-        transform: rotate(-90deg);
-      }
-
-      .header-decoration.right.bottom {
-        left: 140px;
-        transform: rotate(-60deg);
-      }
-
-      .header-decoration.top {
-        top: 16px;
-      }
-
-      .header-decoration.medium {
-        top: 26px;
-      }
-
-      .header-decoration.bottom {
-        top: 36px;
-      }
-
       amiibo-selector {
         --amiibo-selector-font-family: var(--theme-primary-font-family);
         --amiibo-selector-color: var(--theme-color-primary);
@@ -283,29 +238,18 @@ export class AmiiboMain extends LitElement {
 
   render() {
     return html`
-      <div class="content">
+      <slot style="display: ${!this.loadComplete ? 'block' : 'none'}"></slot>
+      <div class="content" style="visibility: ${this.loadComplete ? 'visible' : 'hidden'}">
         <!-- Uncomment this lines if you want to call the service api -->
         <!-- <amiibo-service endpoint='amiibo'></amiibo-service>
         <amiibo-service endpoint='amiiboseries'></amiibo-service> -->
         <header>
           <div>
             <div class="info">
-              <p>
-                <a href="https://github.com/alexarroyoduque/amiibo-album" title="source code" target="_blank">Project developed with lit-htm by AlexArroyoDuque</a>
-              </p>
+              <p><a href="https://github.com/alexarroyoduque/amiibo-album" title="source code" target="_blank">Project developed with lit-htm by AlexArroyoDuque</a></p>
               <p class="extra">Api by N3evin. Updated: March 2019</p>
-   
             </div>
-            <div class="title">
-              <amiibo-header title="amiibum" subtitle="Album to check your collected amiibos"></amiibo-header>
-              <span class="header-decoration left top"></span>
-              <span class="header-decoration left medium"></span>
-              <span class="header-decoration left bottom"></span>
-              <span class="header-decoration right top"></span>
-              <span class="header-decoration right medium"></span>
-              <span class="header-decoration right bottom"></span>
-            </div>
-            </div>
+            <amiibo-header title="amiibum" subtitle="Album to check your collected amiibos"></amiibo-header>
           <div>
             <amiibo-selector label="Series (${this.amiiboseries.length})" placeholder="All" placeholdervalue="all" options=${JSON.stringify(this.amiiboseries.map(serie => serie.name))}></amiibo-selector>
             <amiibo-progress max=${this.amiibosFiltered.length} current=${this.amiibosFiltered.filter(amiibo => amiibo.checked).length}></amiibo-progress>
