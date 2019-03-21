@@ -5,7 +5,7 @@ export function getAllAmiibos() {
   // https://hackernoon.com/save-time-by-transforming-images-in-the-command-line-c63c83e53b17
   // you need install mogrify
   // cd amiibum/src
-  // .mogrify -resize 120 images/*.png
+  // mogrify -resize 100 images/*.png
   // &&
   // ./pngquant --quality=25 images/*.png --ext=.png --force
   //console.log('getAllAmiibos');
