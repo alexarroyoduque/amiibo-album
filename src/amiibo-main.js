@@ -1,4 +1,13 @@
 import { LitElement, html, css } from 'lit-element';
+/*
+  If you want to call the service api you need uncomment:
+  this.addServiceListener() in constructor()
+  <amiibo-service> in render()
+  Then comment:
+  imports getAmiiboseries and getAllAmiibos
+  this.getLocalAmiibos() in constructor()
+*/
+
 /* Comment this lines if you want to call the service api */
 import {getAmiiboseries} from './mock-amiiboseries';
 import {getAllAmiibos} from './mock-amiibos';
@@ -7,7 +16,8 @@ import('./amiibo-header.js')
 import('./amiibo-selector.js')
 import('./amiibo-progress.js')
 import('./amiibo-item.js')
-import('./amiibo-service.js')
+/* Uncomment this line if you want to call the service api */
+// import('./amiibo-service.js')
 
 export class AmiiboMain extends LitElement {
   static get properties() {
@@ -24,16 +34,24 @@ export class AmiiboMain extends LitElement {
     this.amiibosFiltered = [];
     this.amiiboseries = [];
     /* Comment this lines if you want to call the service api */
+    this.getLocalAmiibos();
+    /**/
+
+    /* Uncomment this line if you want to call the service api */
+    // this.addServiceListener();
+    this.addEventListener('selected-option-change', this.handleSelectedOptionChange);
+    this.addEventListener('amiibo-checked-change', this.handleAmiiboCheckedChange);
+  }
+
+  getLocalAmiibos() {
     this.amiiboseries = getAmiiboseries();
     this.allAmiibos = getAllAmiibos();
     this.loadInitialList();
-    /**/
+  }
 
-    /* Uncomment this lines if you want to call the service api */
-    //this.addEventListener('service-response-amiibo', this.handleAmiiboEvent);
-    //this.addEventListener('service-response-amiiboseries', this.handleAmiiboSeriesEvent);
-    this.addEventListener('selected-option-change', this.handleSelectedOptionChange);
-    this.addEventListener('amiibo-checked-change', this.handleAmiiboCheckedChange);
+  addServiceListener() {
+    this.addEventListener('service-response-amiibo', this.handleAmiiboEvent);
+    this.addEventListener('service-response-amiiboseries', this.handleAmiiboSeriesEvent);
   }
 
   mergeStoredWithNewAmiibos() {
