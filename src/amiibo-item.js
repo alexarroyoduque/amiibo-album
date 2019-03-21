@@ -39,8 +39,9 @@ export class AmiiboItem extends LitElement {
       }
 
       h1 a {
-        color: var(--amiibo-item-color, white);
-        text-decoration-style:dotted;
+        color: var(--amiibo-item-color);
+        border-bottom: 1px var(--amiibo-item-color) dotted;
+        text-decoration: none;
       }
 
       input[type="checkbox"] {
