@@ -217,10 +217,47 @@ export class AmiiboMain extends LitElement {
         max-width: 400px;
       }
 
+      .tools {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        width: 92%;
+        margin: 0 auto;
+      }
+
+      .clear, .twitter {
+        text-decoration: none;
+        border: none;
+        color: white;
+        padding: 5px 10px;
+        font-family: var(--theme-primary-font-family);
+        height: 32px;
+        max-height: 32px;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+
       .clear {
-        height: 2rem;
-        margin-left: 0.7rem;
+        background-color: #607D8B;
+        font-size: 0.6rem;
+      }
+
+      .twitter {
+        background-color: #0492e3;
         display: block;
+        font-size: 0.9rem;
+        height: 22px;
+        max-height: 22px;
+        line-height: 22px;
+      }
+
+      .clear:hover {
+        background-color: #546E7A;
+      }
+
+      .twitter:hover {
+        background-color: #0c7abf;
       }
 
       ul, li {
@@ -253,7 +290,14 @@ export class AmiiboMain extends LitElement {
           <div>
             <amiibo-selector label="Series (${this.amiiboseries.length})" placeholder="All" placeholdervalue="all" options=${JSON.stringify(this.amiiboseries.map(serie => serie.name))}></amiibo-selector>
             <amiibo-progress max=${this.amiibosFiltered.length} current=${this.amiibosFiltered.filter(amiibo => amiibo.checked).length}></amiibo-progress>
-            <button class="clear" ?disabled="${!this.amiibosFiltered.filter(amiibo => amiibo.checked).length}" @click="${this.clearLocalStorage}">Clear saved data</button>
+            <div class="tools">
+              <div>
+                <button class="clear" ?disabled="${!this.amiibosFiltered.filter(amiibo => amiibo.checked).length}" @click="${this.clearLocalStorage}">Clear saved data</button>
+              </div>
+              <div>
+                <a class="twitter" target="_blank" href="https://twitter.com/intent/tweet?hashtags=amiibum&text=The album to check your collected amiibos&url=https://amiibum.firebaseapp.com&via=AlexArroyoDuque;">TWEET</a>
+              </div>
+            </div>
           </div>
         </header>
         <article>
