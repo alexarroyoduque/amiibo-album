@@ -38,6 +38,11 @@ export class AmiiboItem extends LitElement {
         max-width: 11rem;
       }
 
+      h1 a {
+        color: var(--amiibo-item-color, white);
+        text-decoration-style:dotted;
+      }
+
       input[type="checkbox"] {
         zoom: 2.5;
         position: absolute;
@@ -58,7 +63,7 @@ export class AmiiboItem extends LitElement {
     // <div class="item" style="background-image: url('/Users/alejandroarroyo/Downloads/Usher.png')">
     return html`
       <div class="item" style="background-image: url(${this.amiibo.image})">
-        <h1>${this.amiibo.name}</h1>
+        <h1><a title="${this.amiibo.name}" href="http://amiibo.life/nfc/${this.amiibo.head}-${this.amiibo.tail}" target="_blank">${this.amiibo.name}</a></h1>
         <input type="checkbox" ?checked=${this.amiibo.checked} @change="${this.checkedChanged}">
       </div>
     `;
