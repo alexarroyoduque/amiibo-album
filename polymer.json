@@ -12,9 +12,12 @@
   "builds": [{
     "bundle": true,
     "js": { 
-      "minify": false,
+      "minify": true,
       "compile": "es5",
       "transformModulesToAmd": true
+    },
+    "html": {
+      "minify": true
     },
     "addServiceWorker": true,
     "addPushManifest": true
