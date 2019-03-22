@@ -11,12 +11,14 @@ import { LitElement, html, css } from 'lit-element';
 /* Comment this lines if you want to call the service api */
 import {getAmiiboseries} from './mock-amiiboseries';
 import {getAllAmiibos} from './mock-amiibos';
+import {getCharacters} from './mock-characters';
+
 /**/
 import('./amiibo-header.js')
 import('./amiibo-selector.js')
 import('./amiibo-progress.js')
 /* Uncomment this line if you want to call the service api */
-// import('./amiibo-service.js')
+import('./amiibo-service.js')
 
 export class AmiiboMain extends LitElement {
   static get properties() {
@@ -24,23 +26,30 @@ export class AmiiboMain extends LitElement {
       loadComplete: {type: Boolean},
       allAmiibos: {type: Array},
       amiiboseries: {type: Array},
-      amiibosFiltered: {type: Array}
+      allCharacters: {type: Array},
+      seriesFilter: {type: String},
+      characterFileter: {type: String},
+      amiibosFiltered: {type: Array},
+      filters: {type: Object}
     };
   }
 
   constructor() {
     super();
     this.loadComplete = false;
+    this.filters = {series: undefined, character: undefined};
     this.allAmiibos = [];
     this.amiibosFiltered = [];
     this.amiiboseries = [];
+    this.allCharacters = [];
     /* Comment this lines if you want to call the service api */
     this.getLocalAmiibos();
     /**/
 
     /* Uncomment this line if you want to call the service api */
     // this.addServiceListener();
-    this.addEventListener('selected-option-change', this.handleSelectedOptionChange);
+    this.addEventListener('selected-option-change-series', this.handleSeriesSelectedChange);
+    this.addEventListener('selected-option-change-characters', this.handleCharactersSelectedChange);
     this.addEventListener('amiibo-checked-change', this.handleAmiiboCheckedChange);
   }
 
@@ -59,12 +68,14 @@ export class AmiiboMain extends LitElement {
   getLocalAmiibos() {
     this.amiiboseries = getAmiiboseries();
     this.allAmiibos = getAllAmiibos();
+    this.allCharacters = getCharacters();
     this.loadInitialList();
   }
 
   addServiceListener() {
     this.addEventListener('service-response-amiibo', this.handleAmiiboEvent);
     this.addEventListener('service-response-amiiboseries', this.handleAmiiboSeriesEvent);
+    this.addEventListener('service-response-character', this.handleCharacterEvent);
   }
 
   mergeStoredWithNewAmiibos() {
@@ -98,22 +109,45 @@ export class AmiiboMain extends LitElement {
   }
 
   handleAmiiboEvent(event) {
+    console.log(JSON.stringify(event.detail.amiibo));
     this.allAmiibos = event.detail.amiibo;
     this.loadInitialList();
   }
 
   handleAmiiboSeriesEvent(event) {
+    console.log(JSON.stringify(event.detail.amiibo));
     this.amiiboseries = event.detail.amiibo;
   }
 
-  handleSelectedOptionChange(event) {
+  handleCharacterEvent(event) {
+    console.log(JSON.stringify(event.detail.amiibo));
+    this.allCharacters = event.detail.amiibo;
+  }
+
+  applyFilters() {
+    this.amiibosFiltered = this.allAmiibos;
+    if (this.filters.series) {
+      this.amiibosFiltered = this.allAmiibos.filter((amiibo)=> amiibo.amiiboSeries === this.filters.series);
+    }
+
+    if (this.filters.character) {
+      this.amiibosFiltered = this.amiibosFiltered.filter((amiibo)=> amiibo.character === this.filters.character);
+    }
+  }
+
+  handleSeriesSelectedChange(event) {
     this.amiibosFiltered = [];
+    this.filters.series = event.detail === 'all' ? undefined : event.detail;
     setTimeout(() => {
-      if (event.detail === 'all') {
-        this.amiibosFiltered = this.allAmiibos;
-      } else {
-        this.amiibosFiltered = this.allAmiibos.filter((amiibo)=> amiibo.amiiboSeries === event.detail);
-      }
+      this.applyFilters();
+    }, 0);
+  }
+
+  handleCharactersSelectedChange(event) {
+    this.amiibosFiltered = [];
+    this.filters.character = event.detail === 'all' ? undefined : event.detail;
+    setTimeout(() => {
+      this.applyFilters();
     }, 0);
   }
 
@@ -217,6 +251,15 @@ export class AmiiboMain extends LitElement {
         max-width: 400px;
       }
 
+      .selectors {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        width: 92%;
+        margin: 0 auto;
+      }
+
       .tools {
         display: flex;
         flex-direction: row;
@@ -240,7 +283,12 @@ export class AmiiboMain extends LitElement {
       }
 
       .clear {
-        background-color: #607D8B;
+        background-color: transparent;
+        box-shadow: inset 0px 0px 0px 1px var(--theme-color-dark);
+      }
+
+      .clear:disabled {
+        opacity: 0.3;
       }
 
       .twitter {
@@ -251,7 +299,7 @@ export class AmiiboMain extends LitElement {
         line-height: 22px;
       }
 
-      .clear:hover {
+      .clear:hover:not([disabled]) {
         background-color: #546E7A;
       }
 
@@ -277,8 +325,11 @@ export class AmiiboMain extends LitElement {
       <slot style="display: ${!this.loadComplete ? 'block' : 'none'}"></slot>
       <div class="content" style="visibility: ${this.loadComplete ? 'visible' : 'hidden'}">
         <!-- Uncomment this lines if you want to call the service api -->
-        <!-- <amiibo-service endpoint='amiibo'></amiibo-service>
-        <amiibo-service endpoint='amiiboseries'></amiibo-service> -->
+        <!--
+        <amiibo-service endpoint='amiibo'></amiibo-service>
+        <amiibo-service endpoint='amiiboseries'></amiibo-service>
+        <amiibo-service endpoint='character'></amiibo-service>
+        -->
         <header>
           <div>
             <div class="info">
@@ -286,16 +337,21 @@ export class AmiiboMain extends LitElement {
               <p class="extra">Api by N3evin. Updated: March 2019</p>
             </div>
             <amiibo-header title="amiibum" subtitle="Album to check your collected amiibos"></amiibo-header>
-          <div>
-            <amiibo-selector label="Series (${this.amiiboseries.length})" placeholder="All" placeholdervalue="all" options=${JSON.stringify(this.amiiboseries.map(serie => serie.name))}></amiibo-selector>
-            <amiibo-progress max=${this.amiibosFiltered.length} current=${this.amiibosFiltered.filter(amiibo => amiibo.checked).length}></amiibo-progress>
-            <div class="tools">
-              <div>
-                <button class="clear" ?disabled="${!this.amiibosFiltered.filter(amiibo => amiibo.checked).length}" @click="${this.clearLocalStorage}">RESET</button>
-              </div>
-              <div>
-                <a class="twitter" target="_blank" href="https://twitter.com/intent/tweet?hashtags=amiibum&text=The album to check your collected amiibos&url=https://amiibum.firebaseapp.com&via=AlexArroyoDuque;">TWEET</a>
-              </div>
+          <div class="selectors">
+            <div>
+              <amiibo-selector suffix="-series" placeholder="All series (${this.amiiboseries.length})" placeholdervalue="all" options=${JSON.stringify(this.amiiboseries.map(serie => serie.name))}></amiibo-selector>
+            </div>
+            <div>
+              <amiibo-selector suffix="-characters" placeholder="All characters (${this.allCharacters.length})" placeholdervalue="all" options=${JSON.stringify(this.allCharacters.map(character => character.name))}></amiibo-selector>
+            </div>
+          </div>
+          <amiibo-progress max=${this.amiibosFiltered.length} current=${this.amiibosFiltered.filter(amiibo => amiibo.checked).length}></amiibo-progress>
+          <div class="tools">
+            <div>
+              <button class="clear" ?disabled="${!this.amiibosFiltered.filter(amiibo => amiibo.checked).length}" @click="${this.clearLocalStorage}">RESET</button>
+            </div>
+            <div>
+              <a class="twitter" target="_blank" href="https://twitter.com/intent/tweet?hashtags=amiibum&text=The album to check your collected amiibos&url=https://amiibum.firebaseapp.com&via=AlexArroyoDuque;">TWEET</a>
             </div>
           </div>
         </header>

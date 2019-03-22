@@ -6,6 +6,7 @@ export class AmiiboSelector extends LitElement {
       label: {type: String},
       placeholder: {type: String},
       placeholderValue: {type: String},
+      suffix: {type: String},
       options: {
         converter: {
           fromAttribute(value) {
@@ -21,9 +22,7 @@ export class AmiiboSelector extends LitElement {
   }
 
   selectedOptionChange(ev) {
-    console.log('selectedOptionChange');
-    console.log(ev.target.value);
-    this.dispatchEvent(new CustomEvent(`selected-option-change`, {
+    this.dispatchEvent(new CustomEvent(`selected-option-change${this.suffix}`, {
       detail: ev.target.value,
       bubbles: true, 
       composed: true
@@ -36,14 +35,12 @@ export class AmiiboSelector extends LitElement {
       :host {
         display: block;
         color: var(--amiibo-selector-color, white);
-        padding: 0.7rem;
         text-align: center;
         font-family: var(--amiibo-selector-font-family);
       }
       
       select {
         height: 1.8rem;
-        width: 60%;
       }
 
     `;
