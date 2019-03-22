@@ -232,6 +232,7 @@ export class AmiiboMain extends LitElement {
         color: white;
         padding: 5px 10px;
         font-family: var(--theme-primary-font-family);
+        font-size: 0.8rem;
         height: 32px;
         max-height: 32px;
         cursor: pointer;
@@ -240,13 +241,11 @@ export class AmiiboMain extends LitElement {
 
       .clear {
         background-color: #607D8B;
-        font-size: 0.6rem;
       }
 
       .twitter {
         background-color: #0492e3;
         display: block;
-        font-size: 0.9rem;
         height: 22px;
         max-height: 22px;
         line-height: 22px;
@@ -292,7 +291,7 @@ export class AmiiboMain extends LitElement {
             <amiibo-progress max=${this.amiibosFiltered.length} current=${this.amiibosFiltered.filter(amiibo => amiibo.checked).length}></amiibo-progress>
             <div class="tools">
               <div>
-                <button class="clear" ?disabled="${!this.amiibosFiltered.filter(amiibo => amiibo.checked).length}" @click="${this.clearLocalStorage}">Clear saved data</button>
+                <button class="clear" ?disabled="${!this.amiibosFiltered.filter(amiibo => amiibo.checked).length}" @click="${this.clearLocalStorage}">RESET</button>
               </div>
               <div>
                 <a class="twitter" target="_blank" href="https://twitter.com/intent/tweet?hashtags=amiibum&text=The album to check your collected amiibos&url=https://amiibum.firebaseapp.com&via=AlexArroyoDuque;">TWEET</a>

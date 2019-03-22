@@ -31,9 +31,11 @@ export class AmiiboTools extends LitElement {
       .bar {
         display: block;
         background-color: var(--amiibo-progress-background-color, black);
-        border-radius: 6px;
         height: 1rem;
         font-size: .8rem;
+        --amiibo-progress-clip: 10px;
+        -webkit-clip-path: polygon(calc(100% - var(--amiibo-progress-clip)) 0, 100% 50%, calc(100% - var(--amiibo-progress-clip)) 100%, var(--amiibo-progress-clip) 100%, 0 50%, var(--amiibo-progress-clip) 0);
+        clip-path: polygon(calc(100% - var(--amiibo-progress-clip)) 0, 100% 50%, calc(100% - var(--amiibo-progress-clip)) 100%, var(--amiibo-progress-clip) 100%, 0 50%, var(--amiibo-progress-clip) 0);
       }
 
     `;
