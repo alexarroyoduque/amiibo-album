@@ -353,7 +353,7 @@ export class AmiiboMain extends LitElement {
               <button class="clear" ?disabled="${!this.amiibosFiltered.filter(amiibo => amiibo.checked).length}" @click="${this.clearLocalStorage}">RESET</button>
             </div>
             <div>
-              <a class="twitter" target="_blank" href="https://twitter.com/intent/tweet?hashtags=amiibum&text=The album to check your collected amiibos&url=https://amiibum.firebaseapp.com&via=AlexArroyoDuque;">TWEET</a>
+              <a class="twitter" target="_blank" href="https://twitter.com/intent/tweet?hashtags=amiibo,amiibum&text=The album to check your collected amiibos&url=https://amiibum.firebaseapp.com&via=AlexArroyoDuque;">TWEET</a>
             </div>
           </div>
         </header>
