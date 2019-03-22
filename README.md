@@ -1,6 +1,6 @@
 # amiibum
 
-Experimental project with lit-html.
+Experimental project to learn lit-html.
 Check your collected amiibos with this album.
 
 [https://amiibum.firebaseapp.com](https://amiibum.firebaseapp.com)

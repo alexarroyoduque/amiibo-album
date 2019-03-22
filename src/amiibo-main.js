@@ -18,7 +18,7 @@ import('./amiibo-header.js')
 import('./amiibo-selector.js')
 import('./amiibo-progress.js')
 /* Uncomment this line if you want to call the service api */
-import('./amiibo-service.js')
+// import('./amiibo-service.js')
 
 export class AmiiboMain extends LitElement {
   static get properties() {
@@ -48,6 +48,8 @@ export class AmiiboMain extends LitElement {
 
     /* Uncomment this line if you want to call the service api */
     // this.addServiceListener();
+    /**/
+    
     this.addEventListener('selected-option-change-series', this.handleSeriesSelectedChange);
     this.addEventListener('selected-option-change-characters', this.handleCharactersSelectedChange);
     this.addEventListener('amiibo-checked-change', this.handleAmiiboCheckedChange);
