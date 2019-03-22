@@ -66,11 +66,39 @@ export class AmiiboMain extends LitElement {
       console.log("LazyElement failed to load", reason);
     });
   }
+  
+  // https://www.sitepoint.com/sort-an-array-of-objects-in-javascript/
+  compareValues(key, order='asc') {
+    return function(a, b) {
+      if(!a.hasOwnProperty(key) || 
+         !b.hasOwnProperty(key)) {
+        return 0; 
+      }
+      
+      const varA = (typeof a[key] === 'string') ? 
+        a[key].toUpperCase() : a[key];
+      const varB = (typeof b[key] === 'string') ? 
+        b[key].toUpperCase() : b[key];
+        
+      let comparison = 0;
+      if (varA > varB) {
+        comparison = 1;
+      } else if (varA < varB) {
+        comparison = -1;
+      }
+      return (
+        (order == 'desc') ? 
+        (comparison * -1) : comparison
+      );
+    };
+  }
 
   getLocalAmiibos() {
-    this.amiiboseries = getAmiiboseries();
+    var series = getAmiiboseries();
+    var characters = getCharacters();
     this.allAmiibos = getAllAmiibos();
-    this.allCharacters = getCharacters();
+    this.amiiboseries = series.sort(this.compareValues('name', 'asc'));
+    this.allCharacters = characters.sort(this.compareValues('name', 'asc'));
     this.loadInitialList();
   }
 
@@ -118,12 +146,14 @@ export class AmiiboMain extends LitElement {
 
   handleAmiiboSeriesEvent(event) {
     console.log(JSON.stringify(event.detail.amiibo));
-    this.amiiboseries = event.detail.amiibo;
+    var series = event.detail.amiibo;
+    this.amiiboseries = series.sort(this.compareValues('name', 'asc'));
   }
 
   handleCharacterEvent(event) {
     console.log(JSON.stringify(event.detail.amiibo));
-    this.allCharacters = event.detail.amiibo;
+    var characters = event.detail.amiibo;
+    this.allCharacters = characters.sort(this.compareValues('name', 'asc'));
   }
 
   applyFilters() {
