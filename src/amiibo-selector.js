@@ -36,6 +36,7 @@ export class AmiiboSelector extends LitElement {
         display: block;
         color: var(--amiibo-selector-color, white);
         font-family: var(--amiibo-selector-font-family);
+        font-size: .7rem;
       }
       
       select {
@@ -55,14 +56,16 @@ export class AmiiboSelector extends LitElement {
       }
     
       .container select {
+        appearance: none;
         color: var(--amiibo-selector-color);
         border: none;
         box-shadow: none;
         background-color: transparent;
         background-image: none;
+        font-family: var(--amiibo-selector-font-family);
+        font-size: .7rem;
         -webkit-appearance: none;
         -moz-appearance: none;
-        appearance: none;
       }
       
       .container select:focus {
