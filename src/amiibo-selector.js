@@ -40,11 +40,11 @@ export class AmiiboSelector extends LitElement {
       }
       
       select {
-        height: 1.8rem;
+        height: 1.7rem;
       }
 
       .container {
-        padding: 0 15px 0 5px;
+        padding: 0 15px 0 .2rem;
         margin: 0;
         overflow: hidden;
         background-color: transparent;
