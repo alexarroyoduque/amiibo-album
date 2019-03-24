@@ -26,16 +26,18 @@ export class AmiiboItem extends LitElement {
         background-position-y: -0.2rem;
         color: var(--amiibo-item-color, white);
         height: 3.5rem;
-        padding: 0 0 0 .5rem;
-        position: relative;
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-between;
       }
 
       h1 {
+        margin: 0 0 0 5.5rem;
         font-size: .9rem;
         font-family: var(--amiibo-item-font-family);
-        display: inline-block;
-        margin: .4rem 0 0 5rem;
-        max-width: 11rem;
       }
 
       h1 a {
@@ -44,10 +46,12 @@ export class AmiiboItem extends LitElement {
         text-decoration: none;
       }
 
+      .action {
+        min-width: 3rem;
+      }
+      
       input[type="checkbox"] {
         zoom: 2.5;
-        position: absolute;
-        left: calc(100% - 20px);
       }
     `;
   }
@@ -64,8 +68,12 @@ export class AmiiboItem extends LitElement {
     // <div class="item" style="background-image: url('/Users/alejandroarroyo/Downloads/Usher.png')">
     return html`
       <div class="item" style="background-image: url(${this.amiibo.image})">
-        <h1><a title="${this.amiibo.name}" href="http://amiibo.life/nfc/${this.amiibo.head}-${this.amiibo.tail}" target="_blank">${this.amiibo.name}</a></h1>
-        <input type="checkbox" ?checked=${this.amiibo.checked} @change="${this.checkedChanged}">
+        <div class="title">
+          <h1><a title="${this.amiibo.name}" href="http://amiibo.life/nfc/${this.amiibo.head}-${this.amiibo.tail}" target="_blank">${this.amiibo.name}</a></h1>
+        </div>
+        <div class="action">
+          <input type="checkbox" ?checked=${this.amiibo.checked} @change="${this.checkedChanged}">
+        </div>
       </div>
     `;
   }
