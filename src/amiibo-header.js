@@ -34,7 +34,7 @@ export class AmiiboHeader extends LitElement {
         font-size: 1rem;
       }
 
-      .title {
+      .header-decoration-container {
         position: relative;
       }
       .header-decoration {
@@ -97,7 +97,7 @@ export class AmiiboHeader extends LitElement {
 
   render() {
     return html`
-      <div class="title">
+      <div class="header-decoration-container">
         <span class="header-decoration left top"></span>
         <span class="header-decoration left medium"></span>
         <span class="header-decoration left bottom"></span>
