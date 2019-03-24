@@ -89,6 +89,7 @@ export class AmiiboItem extends LitElement {
         left: 0;
         height: 30px;
         width: 30px;
+        transition: background-color .2s ease-in;
         background-color: var(--amiibo-item-checkbox-unchecked-background);
         border-radius: 4px;
       }
