@@ -108,6 +108,7 @@ export class AmiiboMain extends LitElement {
     console.log(this.allAmiibos.length);
     if (storedAmiibos.length === this.allAmiibos.length) {
       this.amiibosFiltered = storedAmiibos;
+      this.amiibosFiltered.map(amiibo => amiibo.url = `https://amiibo.life/search?utf8=%E2%9C%93&q=${amiibo.name.replace(/ /g,"+")}&commit=Go`);
       this.allAmiibos = this.amiibosFiltered;
     } else {
       let checkedAmiibos = storedAmiibos.filter(amiibo => amiibo.checked);
@@ -122,7 +123,7 @@ export class AmiiboMain extends LitElement {
 
   loadInitialList() {
     this.allAmiibos.map(amiibo => amiibo.checked = false);
-    this.allAmiibos.map(amiibo => amiibo.url = `http://amiibo.life/nfc/${amiibo.head}-${amiibo.tail}`);
+    this.allAmiibos.map(amiibo => amiibo.url = `https://amiibo.life/search?utf8=%E2%9C%93&q=${amiibo.name.replace(/ /g,"+")}&commit=Go`);
     if (localStorage.getItem('amiibos')) {
       this.mergeStoredWithNewAmiibos();
     } else {
