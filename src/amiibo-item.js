@@ -3,13 +3,14 @@ import { LitElement, html, css } from 'lit-element';
 export class AmiiboItem extends LitElement {
   static get properties() {
     return { 
-      amiibo: {
+      item: {
         converter: {
           fromAttribute(value) {
             return JSON.parse(value)
           }
         }
-      }
+      },
+      url: {type: String}
     };
   }
 
@@ -88,18 +89,18 @@ export class AmiiboItem extends LitElement {
         left: 0;
         height: 30px;
         width: 30px;
-        background-color: #CFD8DC;
+        background-color: var(--amiibo-item-checkbox-unchecked-background);
         border-radius: 4px;
       }
 
       /* On mouse-over, add a grey background color */
       .container:hover input ~ .checkmark {
-        background-color: #B0BEC5;
+        background-color: var(--amiibo-item-checkbox-unchecked-background-hover);
       }
 
       /* When the checkbox is checked, add a custom color background */
       .container input:checked ~ .checkmark {
-        background-color: #07cd49;
+        background-color: var(--amiibo-item-checkbox-checked-background);
       }
 
       /* Create the checkmark/indicator (hidden when not checked) */
@@ -107,13 +108,13 @@ export class AmiiboItem extends LitElement {
         content: "";
         position: absolute;
         display: block;
-        border-color: #ECEFF1;
+        border-color: var(--amiibo-item-checkbox-unchecked-color);
       }
 
       /* Show the checkmark when checked */
       .container input:checked ~ .checkmark:after {
         display: block;
-        border-color: white;
+        border-color: var(--amiibo-item-checkbox-checked-color);
       }
 
       /* Style the checkmark/indicator */
@@ -134,7 +135,7 @@ export class AmiiboItem extends LitElement {
 
   checkedChanged(event) {
     this.dispatchEvent(new CustomEvent(`amiibo-checked-change`, {
-      detail: {tail: this.amiibo.tail, checked: event.target.checked},
+      detail: {tail: this.item.tail, checked: event.target.checked},
       bubbles: true, 
       composed: true
     }));
@@ -143,13 +144,13 @@ export class AmiiboItem extends LitElement {
   render() {
     // <div class="item" style="background-image: url('/Users/alejandroarroyo/Downloads/Usher.png')">
     return html`
-      <div class="item" style="background-image: url(${this.amiibo.image})">
+      <div class="item" style="background-image: url(${this.item.image})">
         <div class="title">
-          <h1><a title="${this.amiibo.name}" href="http://amiibo.life/nfc/${this.amiibo.head}-${this.amiibo.tail}" target="_blank">${this.amiibo.name}</a></h1>
+          <h1><a title="${this.item.name}" href=${this.item.url} target="_blank">${this.item.name}</a></h1>
         </div>
         <div class="action">
           <label class="container">
-            <input type="checkbox" ?checked=${this.amiibo.checked} @change="${this.checkedChanged}">
+            <input type="checkbox" ?checked=${this.item.checked} @change="${this.checkedChanged}">
             <span class="checkmark"></span>
           </label>
         </div>

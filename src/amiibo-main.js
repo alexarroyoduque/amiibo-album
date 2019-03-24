@@ -102,22 +102,14 @@ export class AmiiboMain extends LitElement {
     this.loadInitialList();
   }
 
-  addServiceListener() {
-    this.addEventListener('service-response-amiibo', this.handleAmiiboEvent);
-    this.addEventListener('service-response-amiiboseries', this.handleAmiiboSeriesEvent);
-    this.addEventListener('service-response-character', this.handleCharacterEvent);
-  }
-
   mergeStoredWithNewAmiibos() {
     let storedAmiibos = JSON.parse(localStorage.getItem('amiibos'));
     console.log(storedAmiibos.length);
     console.log(this.allAmiibos.length);
     if (storedAmiibos.length === this.allAmiibos.length) {
-      this.allAmiibos.map(amiibo => amiibo.checked = false);
       this.amiibosFiltered = storedAmiibos;
       this.allAmiibos = this.amiibosFiltered;
     } else {
-      this.allAmiibos.map(amiibo => amiibo.checked = false);
       let checkedAmiibos = storedAmiibos.filter(amiibo => amiibo.checked);
       checkedAmiibos.forEach(checkedAmiibos => {
         this.allAmiibos.find(amiibo => amiibo.tail === checkedAmiibos.tail).checked = true
@@ -129,13 +121,20 @@ export class AmiiboMain extends LitElement {
   }
 
   loadInitialList() {
+    this.allAmiibos.map(amiibo => amiibo.checked = false);
+    this.allAmiibos.map(amiibo => amiibo.url = `http://amiibo.life/nfc/${amiibo.head}-${amiibo.tail}`);
     if (localStorage.getItem('amiibos')) {
       this.mergeStoredWithNewAmiibos();
     } else {
-      this.allAmiibos.map(amiibo => amiibo.checked = false);
       this.amiibosFiltered = this.allAmiibos;
       localStorage.setItem('amiibos', JSON.stringify(this.allAmiibos));
     }
+  }
+
+  addServiceListener() {
+    this.addEventListener('service-response-amiibo', this.handleAmiiboEvent);
+    this.addEventListener('service-response-amiiboseries', this.handleAmiiboSeriesEvent);
+    this.addEventListener('service-response-character', this.handleCharacterEvent);
   }
 
   handleAmiiboEvent(event) {
@@ -215,6 +214,7 @@ export class AmiiboMain extends LitElement {
         --theme-primary-font-family: Muli;
         --theme-secondary-font-family: Montserrat;
         --theme-color-light: #fff;
+        --theme-color-green: #07cd49;
         --theme-color-light-gray: #F5F5F5;
         --theme-color-dark: #585858;
 
@@ -224,7 +224,7 @@ export class AmiiboMain extends LitElement {
 
       header {
         margin-bottom: 0.8rem;
-        padding-bottom: 0.5rem;
+        padding: .3rem .7rem .7rem .7rem;
         box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.5);
         background: #f85032;  /* fallback for old browsers */
         background: -webkit-linear-gradient(to bottom, #e73827, #f85032);  /* Chrome 10-25, Safari 5.1-6 */
@@ -253,24 +253,27 @@ export class AmiiboMain extends LitElement {
       amiibo-item {
         --amiibo-item-font-family: var(--theme-secondary-font-family);
         --amiibo-item-color: var(--theme-color-dark);
+        --amiibo-item-checkbox-checked-background: var(--theme-color-green);
+        --amiibo-item-checkbox-checked-color: var(--theme-color-light);
+        --amiibo-item-checkbox-unchecked-background: #CFD8DC;
+        --amiibo-item-checkbox-unchecked-color: #ECEFF1;
+        --amiibo-item-checkbox-unchecked-background-hover: #B0BEC5;
       }
 
       .info {
-        color: white;
+        color: var(--theme-color-light);
         width: 100%;
         display: block;
         font-size: 0.7rem;
         opacity: .6;
         text-align: center;
+        margin-bottom: .5rem;
       }
       
       .info a {
-        color: white;
+        color: var(--theme-color-light);
       }
 
-      .info {
-        padding-top: .3rem;
-      }
       .info p {
         margin: 0;
       }
@@ -288,8 +291,9 @@ export class AmiiboMain extends LitElement {
         flex-direction: row;
         flex-wrap: nowrap;
         justify-content: space-between;
-        width: 92%;
+        width: 100%;
         margin: 0 auto;
+        padding: .7rem 0;
       }
 
       .tools {
@@ -297,8 +301,10 @@ export class AmiiboMain extends LitElement {
         flex-direction: row;
         flex-wrap: nowrap;
         justify-content: space-between;
-        width: 92%;
+        width: 100%;
         margin: 0 auto;
+        padding-top: .7rem;
+
       }
 
       .clear, .twitter {
@@ -380,7 +386,7 @@ export class AmiiboMain extends LitElement {
           <amiibo-progress max=${this.amiibosFiltered.length} current=${this.amiibosFiltered.filter(amiibo => amiibo.checked).length}></amiibo-progress>
           <div class="tools">
             <div>
-              <button class="clear" ?disabled="${!this.amiibosFiltered.filter(amiibo => amiibo.checked).length}" @click="${this.clearLocalStorage}">RESET</button>
+              <button class="clear" ?disabled="${!this.amiibosFiltered.filter(amiibo => amiibo.checked).length}" @click="${this.clearLocalStorage}">DELETE SAVED DATA</button>
             </div>
             <div>
               <a class="twitter" target="_blank" href="https://twitter.com/intent/tweet?hashtags=amiibo,amiibum&text=The album to check your collected amiibos&url=https://amiibum.firebaseapp.com&via=AlexArroyoDuque;">TWEET</a>
@@ -389,7 +395,7 @@ export class AmiiboMain extends LitElement {
         </header>
         <article>
           <ul>
-            ${this.amiibosFiltered.map(character => html`<li><amiibo-item amiibo=${JSON.stringify(character)}></amiibo-item></li>`)}
+            ${this.amiibosFiltered.map(character => html`<li><amiibo-item item=${JSON.stringify(character)}></amiibo-item></li>`)}
           </ul>
         </article>
 

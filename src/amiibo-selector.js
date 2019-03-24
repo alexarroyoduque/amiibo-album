@@ -35,7 +35,6 @@ export class AmiiboSelector extends LitElement {
       :host {
         display: block;
         color: var(--amiibo-selector-color, white);
-        text-align: center;
         font-family: var(--amiibo-selector-font-family);
       }
       
@@ -52,11 +51,11 @@ export class AmiiboSelector extends LitElement {
         background-position-x: 97%;
         background-position-y: 50%;
         background-size: .5rem;
-        border-bottom: solid 1px white;
+        border-bottom: solid 1px var(--amiibo-selector-color);
       }
     
       .container select {
-        color: white;
+        color: var(--amiibo-selector-color);
         border: none;
         box-shadow: none;
         background-color: transparent;

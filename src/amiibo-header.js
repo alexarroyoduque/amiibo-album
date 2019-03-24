@@ -17,7 +17,6 @@ export class AmiiboHeader extends LitElement {
       :host {
         display: block;
         color: var(--amiibo-header-color, white);
-        padding: 0.7rem;
         text-align: center;
       }
 

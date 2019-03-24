@@ -23,7 +23,6 @@ export class AmiiboTools extends LitElement {
         display: block;
         color: var(--amiibo-progress-color, white);
 
-        padding: 0.7rem;
         text-align: center;
         font-family: var(--amiibo-progress-font-family);
       }
