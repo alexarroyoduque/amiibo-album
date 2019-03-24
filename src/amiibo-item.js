@@ -62,7 +62,14 @@ export class AmiiboItem extends LitElement {
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
-        padding: .5rem;
+        margin-bottom: 30px;
+        tap-highlight-color: rgba(0,0,0,0);
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+      }
+
+      .container:active, .container:focus {
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        tap-highlight-color: rgba(0,0,0,0);
       }
 
       /* Hide the browser's default checkbox */
