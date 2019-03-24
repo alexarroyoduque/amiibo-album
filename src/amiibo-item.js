@@ -81,16 +81,16 @@ export class AmiiboItem extends LitElement {
         left: 0;
         height: 30px;
         width: 30px;
-        background-color: #dadada;
+        background-color: #CFD8DC;
         border-radius: 4px;
       }
 
       /* On mouse-over, add a grey background color */
       .container:hover input ~ .checkmark {
-        background-color: #ccc;
+        background-color: #B0BEC5;
       }
 
-      /* When the checkbox is checked, add a blue background */
+      /* When the checkbox is checked, add a custom color background */
       .container input:checked ~ .checkmark {
         background-color: #07cd49;
       }
@@ -99,12 +99,14 @@ export class AmiiboItem extends LitElement {
       .checkmark:after {
         content: "";
         position: absolute;
-        display: none;
+        display: block;
+        border-color: #ECEFF1;
       }
 
       /* Show the checkmark when checked */
       .container input:checked ~ .checkmark:after {
         display: block;
+        border-color: white;
       }
 
       /* Style the checkmark/indicator */
@@ -113,7 +115,7 @@ export class AmiiboItem extends LitElement {
         top: 4px;
         width: 8px;
         height: 14px;
-        border: solid white;
+        border-style: solid;
         border-width: 0 4px 4px 0;
         -webkit-transform: rotate(45deg);
         -ms-transform: rotate(45deg);
