@@ -373,7 +373,7 @@ export class AmiiboMain extends LitElement {
           <div>
             <div class="info">
               <p><a href="https://github.com/alexarroyoduque/amiibum" title="source code" target="_blank">Source code by AlexArroyoDuque. #lit-element #lit-html</a></p>
-              <p class="extra">Api by N3evin. Updated: March 2019</p>
+              <p class="extra">Api by N3evin. Updated: May 2021</p>
             </div>
             <amiibo-header title="amiibum" subtitle="Album to check your collected amiibos"></amiibo-header>
           <div class="selectors">
